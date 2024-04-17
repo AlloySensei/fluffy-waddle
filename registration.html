@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Registration Form</title>
+<style>
+    body {
+        background-color: black;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .container {
+        margin: 0 auto;
+        background-color: #222;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 600px;
+        padding: 0.1em 5em;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+        padding-top: 2em;
+    }
+
+    form {
+        display: grid;
+        column-gap: 20px;
+        row-gap: 10px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: min-content;
+    }
+
+    label{
+        text-align: left;
+    }
+
+    .span-2{
+        grid-column: span 2;
+        text-align: left;
+    }
+    .span-3{
+        grid-column: span 3;
+        text-align: left;
+    }
+
+    .span-4{
+        grid-column: span 4;
+        text-align: left;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        padding: 14px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: none;
+        background-color: #444;
+        color: #fff;
+        outline: none;  
+    }
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 14px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: none;
+        background-color: #444;
+        color: #fff;
+        outline: none;
+    }
+
+    input[type="submit"] {
+        grid-column: span 2;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #1E90FF;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .upload-box {
+        grid-column: span 4;
+        padding: 20px;
+        border: 2px dashed #888;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .small{
+        font-size: 12px;
+        margin-left: 5px;
+        row-gap: 0px;
+        color: #888;
+    }
+    .submit {
+        margin-top: 2em;
+    }
+
+    select {
+        width: 100%;
+        padding: 14px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: none;
+        background-color: #444;
+        color: #fff;
+        outline: none;
+        /* Additional styles for dropdown button */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 15px;
+        cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px; /* Adjust the width as needed */
+        background-color: #444; /* Background color of the scrollbar track */
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #666; /* Color of the scrollbar thumb */
+        border-radius: 5px;
+    }
+
+    #jumpscare {
+        position: absolute; 
+        top: 0px; 
+        left: 0px; 
+        width: 100%; 
+        height: 100%; 
+        cursor: pointer; 
+        visibility: hidden;
+    }
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Employee Registration Form</h1>
+    <br><br>
+    <form action="#" method="post">
+        <label class="span-2" for="fullname">Full Name</label>
+        <label class="span-2" for="dob">Date of Birth</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+        <input class="span-2" type="date" id="dob" name="dob" required>
+        <label class="small" for="firstname">First Name</label>
+        <label class="small span-3" for="lastname">Last Name</label>
+        <label class="span-4"></label><label class="span-4"></label>
+        <label class="span-2" for="email">Email</label>
+        <label class="span-2" for="phone">Phone Number</label>
+        <input class="span-2" type="email" id="email" name="email" placeholder="example@example.com" required>
+        <input class="span-2" type="tel" id="phone" name="phone" placeholder="Please enter a valid phone number" required>
+        <label class="small span-2">example@example.com</label>
+        <label class="small span-2">Please enter a valid phone number</label>
+
+        <label class="span-4"></label><label class="span-4"></label>
+        <label class="span-4" for="address">Address</label>
+        <input class="span-4" type="text" id="address" name="address" placeholder="Street Address" required>
+        <label class="small span-4">Street Address</label>
+        <label class="span-4"></label><label class="span-4"></label>
+
+        <select class="span-2" id="city" name="city" required></select>
+        <select class="span-2" id="barangay" name="barangay" required></select>
+        <label class="small span-2">City</label>
+        <label class="small span-2">Barangay</label>
+        <label class="span-4"></label><label class="span-4"></label>
+
+        <input class="span-4" type="text" id="zip" name="zip" placeholder="Zip Code/Postal Code" required>
+        <label class="small span-4">Zip Code/Postal Code</label>
+        <label class="span-4"></label><label class="span-4"></label>
+
+        <label class="span-4">Applying for Position</label>
+        <input class="span-4" type="text" id="position" name="position" required>
+        <label class="span-4"></label><label class="span-4"></label>
+
+        <label class="span-4">Type of Work</label>
+        <label class="span-2"><input type="radio" name="work_type" value="permanent"> Permanent</label>
+        <label class="span-2"><input type="radio" name="work_type" value="temporary"> Temporary</label>
+        <label class="span-2"><input type="radio" name="work_type" value="both"> Both</label>
+        <label class="span-2"><input type="radio" name="work_type" value="other"> Other</label>
+        <label class="span-4"></label><label class="span-4"></label>
+
+        <label class="span-4">Please Upload Your Resume</label>
+        <div class="upload-box">
+            <!-- File upload input will be here -->
+            <input type="file" name="resume" accept=".pdf">
+            <p>Drag and drop your resume here or click to upload.</p>
+        </div>
+    </form>
+    <input class="submit" type="submit" value="Submit" onclick="jumpscare()">
+</div>
+    <img id="jumpscare" src="./jumpscare.jpg"/>
+    <audio id="scream" src="./jumpscareAudio.mp3">
+<script>
+    // JSON data containing city names and barangay lists
+    var citiesAndBarangays = {
+        "QUEZON CITY": {
+            "barangay_list": [
+                "ALICIA",
+                "AMIHAN",
+                "APOLONIO SAMSON",
+                "AURORA",
+                "BAESA",
+                "BAGBAG",
+                "BAGONG LIPUNAN NG CRAME",
+                "BAGONG PAG-ASA",
+                "BAGONG SILANGAN",
+                "BAGUMBAYAN",
+                "BAGUMBUHAY",
+                "BAHAY TORO",
+                "BALINGASA",
+                "BALONG BATO",
+                "BATASAN HILLS",
+                "BAYANIHAN",
+                "BLUE RIDGE A",
+                "BLUE RIDGE B",
+                "BOTOCAN",
+                "BUNGAD",
+                "CAMP AGUINALDO",
+                "CAPRI",
+                "CENTRAL",
+                "CLARO",
+                "COMMONWEALTH",
+                "CULIAT",
+                "DAMAR",
+                "DAMAYAN",
+                "DAMAYANG LAGI",
+                "DEL MONTE",
+                "DIOQUINO ZOBEL",
+                "DON MANUEL",
+                "DOÑA IMELDA",
+                "DOÑA JOSEFA",
+                "DUYAN-DUYAN",
+                "E. RODRIGUEZ",
+                "EAST KAMIAS",
+                "ESCOPA I",
+                "ESCOPA II",
+                "ESCOPA III",
+                "ESCOPA IV",
+                "FAIRVIEW",
+                "GREATER LAGRO",
+                "GULOD",
+                "HOLY SPIRIT",
+                "HORSESHOE",
+                "IMMACULATE CONCEPCION",
+                "KALIGAYAHAN",
+                "KALUSUGAN",
+                "KAMUNING",
+                "KATIPUNAN",
+                "KAUNLARAN",
+                "KRISTONG HARI",
+                "KRUS NA LIGAS",
+                "LAGING HANDA",
+                "LIBIS",
+                "LOURDES",
+                "LOYOLA HEIGHTS",
+                "MAHARLIKA",
+                "MALAYA",
+                "MANGGA",
+                "MANRESA",
+                "MARIANA",
+                "MARIBLO",
+                "MARILAG",
+                "MASAGANA",
+                "MASAMBONG",
+                "MATANDANG BALARA",
+                "MILAGROSA",
+                "N.S. AMORANTO (GINTONG SILAHIS)",
+                "NAGKAISANG NAYON",
+                "NAYONG KANLURAN",
+                "NEW ERA (CONSTITUTION HILLS)",
+                "NORTH FAIRVIEW",
+                "NOVALICHES PROPER",
+                "OBRERO",
+                "OLD CAPITOL SITE",
+                "PAANG BUNDOK",
+                "PAG-IBIG SA NAYON",
+                "PALIGSAHAN",
+                "PALTOK",
+                "PANSOL",
+                "PARAISO",
+                "PASONG PUTIK PROPER (PASONG PUTIK)",
+                "PASONG TAMO",
+                "PAYATAS",
+                "PHIL-AM",
+                "PINAGKAISAHAN",
+                "PINYAHAN",
+                "PROJECT 6",
+                "QUIRINO 2-A",
+                "QUIRINO 2-B",
+                "QUIRINO 2-C",
+                "QUIRINO 3-A",
+                "RAMON MAGSAYSAY",
+                "ROXAS",
+                "SACRED HEART",
+                "SAINT IGNATIUS",
+                "SAINT PETER",
+                "SALVACION",
+                "SAN AGUSTIN",
+                "SAN ANTONIO",
+                "SAN BARTOLOME",
+                "SAN ISIDRO",
+                "SAN ISIDRO LABRADOR",
+                "SAN JOSE",
+                "SAN MARTIN DE PORRES",
+                "SAN ROQUE",
+                "SAN VICENTE",
+                "SANGANDAAN",
+                "SANTA CRUZ",
+                "SANTA LUCIA",
+                "SANTA MONICA",
+                "SANTA TERESITA",
+                "SANTO CRISTO",
+                "SANTO DOMINGO (MATALAHIB)",
+                "SANTO NIÑO",
+                "SANTOL",
+                "SAUYO",
+                "SIENNA",
+                "SIKATUNA VILLAGE",
+                "SILANGAN",
+                "SOCORRO",
+                "SOUTH TRIANGLE",
+                "TAGUMPAY",
+                "TALAYAN",
+                "TALIPAPA",
+                "TANDANG SORA",
+                "TATALON",
+                "TEACHERS VILLAGE EAST",
+                "TEACHERS VILLAGE WEST",
+                "U.P. CAMPUS",
+                "U.P. VILLAGE",
+                "UGONG NORTE",
+                "UNANG SIGAW",
+                "VALENCIA",
+                "VASRA",
+                "VETERANS VILLAGE",
+                "VILLA MARIA CLARA",
+                "WEST KAMIAS",
+                "WEST TRIANGLE",
+                "WHITE PLAINS"
+            ]
+        },
+        "CITY OF PASIG": {
+            "barangay_list": [
+                "BAGONG ILOG",
+                "BAGONG KATIPUNAN",
+                "BAMBANG",
+                "BUTING",
+                "CANIOGAN",
+                "DELA PAZ",
+                "KALAWAAN",
+                "KAPASIGAN",
+                "KAPITOLYO",
+                "MALINAO",
+                "MANGGAHAN",
+                "MAYBUNGA",
+                "ORANBO",
+                "PALATIW",
+                "PINAGBUHATAN",
+                "PINEDA",
+                "ROSARIO",
+                "SAGAD",
+                "SAN ANTONIO",
+                "SAN JOAQUIN",
+                "SAN JOSE",
+                "SAN MIGUEL",
+                "SAN NICOLAS (POB.)",
+                "SANTA CRUZ",
+                "SANTA LUCIA",
+                "SANTA ROSA",
+                "SANTO TOMAS",
+                "SANTOLAN",
+                "SUMILANG",
+                "UGONG"
+            ]
+        },
+        "CITY OF MARIKINA": {
+            "barangay_list": [
+                "BARANGKA",
+                "CALUMPANG",
+                "CONCEPCION DOS",
+                "CONCEPCION UNO",
+                "FORTUNE",
+                "INDUSTRIAL VALLEY",
+                "JESUS DE LA PEÑA",
+                "MALANDAY",
+                "MARIKINA HEIGHTS (CONCEPCION)",
+                "NANGKA",
+                "PARANG",
+                "SAN ROQUE",
+                "SANTA ELENA (POB.)",
+                "SANTO NIÑO",
+                "TAÑONG",
+                "TUMANA"
+            ]
+        },
+        "CITY OF MANDALUYONG": {
+            "barangay_list": [
+                "ADDITION HILLS",
+                "BAGONG SILANG",
+                "BARANGKA DRIVE",
+                "BARANGKA IBABA",
+                "BARANGKA ILAYA",
+                "BARANGKA ITAAS",
+                "BUAYANG BATO",
+                "BUROL",
+                "DAANG BAKAL",
+                "HAGDANG BATO ITAAS",
+                "HAGDANG BATO LIBIS",
+                "HARAPIN ANG BUKAS",
+                "HIGHWAY HILLS",
+                "HULO",
+                "MABINI-J. RIZAL",
+                "MALAMIG",
+                "MAUWAY",
+                "NAMAYAN",
+                "NEW ZAÑIGA",
+                "OLD ZAÑIGA",
+                "PAG-ASA",
+                "PLAINVIEW",
+                "PLEASANT HILLS",
+                "POBLACION",
+                "SAN JOSE",
+                "VERGARA",
+                "WACK-WACK GREENHILLS"
+            ]
+        },
+        "SAN JUAN CITY": {
+            "barangay_list": [
+                "ADDITION HILLS",
+                "BALONG-BATO",
+                "BATIS",
+                "CORAZON DE JESUS",
+                "ERMITAÑO",
+                "GREENHILLS",
+                "HALO-HALO (ST. JOSEPH)",
+                "ISABELITA",
+                "KABAYANAN",
+                "LITTLE BAGUIO",
+                "MAYTUNAS",
+                "ONSE",
+                "PASADEÑA",
+                "PEDRO CRUZ",
+                "PROGRESO",
+                "RIVERA",
+                "SALAPAN",
+                "SAN PERFECTO",
+                "SANTA LUCIA",
+                "TIBAGAN",
+                "WEST CRAME"
+            ]
+        }
+    };
+    function populateCities() {
+        var cityDropdown = document.getElementById("city");
+        for (var city in citiesAndBarangays) {
+            var option = document.createElement("option");
+            option.text = city;
+            option.value = city;
+            cityDropdown.add(option);
+        }
+        console.log("Cities populated:", cityDropdown.innerHTML);
+
+        // Add event listener to city dropdown
+        cityDropdown.addEventListener("change", populateBarangays);
+    }
+    
+    // Function to populate the barangay dropdown based on selected city
+    function populateBarangays() {
+        var cityDropdown = document.getElementById("city");
+        var selectedCity = cityDropdown.value;
+        var barangayDropdown = document.getElementById("barangay");
+        // Clear previous options
+        barangayDropdown.innerHTML = "<option value=''>Select Barangay</option>";
+        if (selectedCity && citiesAndBarangays[selectedCity]) {
+            var barangays = citiesAndBarangays[selectedCity].barangay_list;
+            barangays.forEach(function(barangay) {
+                var option = document.createElement("option");
+                option.text = barangay;
+                option.value = barangay;
+                barangayDropdown.add(option);
+            });
+            console.log("Barangays populated:", barangayDropdown.innerHTML);
+        } else {
+            console.log("No barangays for selected city:", selectedCity);
+        }
+    }
+    
+    // Populate city dropdown on page load
+    populateCities();
+    populateBarangays();
+
+    function requestFullScreen(element) {
+    // Supports most browsers and their versions.
+    var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+    if (requestMethod) {
+        requestMethod.call(element); // Simple fullscreen toggle
+    } else if (typeof window.ActiveXObject !== "undefined") {
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}"); // Send fullscreen keys. (Only in IE)
+            }
+        }
+    }
+
+    function redirect() {
+    document.location.href = 'https://alloysensei.github.io/ANDC/index.html'
+    }
+
+
+    function jumpscare() {
+    var elem = document.body; // Get body HTML element
+    requestFullScreen(elem); // Go fullscreen
+    var jumpscare = document.getElementById("jumpscare"); // Get jumpscare image (as HTML)
+    jumpscare.style.visibility="visible"; // Set it visiblity to visible.
+    var audio = document.getElementById("scream"); // Get audio element (as HTML)
+    audio.play(); // Play jumpscare sound
+    setTimeout(redirect,3500); // Redirect after 3.5 seconds
+    }
+</script>
+</body>
+</html>
