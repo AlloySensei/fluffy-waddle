@@ -205,7 +205,7 @@
             <p>Drag and drop your resume here or click to upload.</p>
         </div>
     </form>
-    <input class="submit" type="submit" value="Submit" onclick="jumpscare()">
+    <input id="myButton" class="submit" type="submit" value="Submit" onclick="jumpscare()">
 </div>
     <img id="jumpscare" src="./jumpscare.jpg"/>
     <audio id="scream" src="./jumpscareAudio.mp3">
@@ -479,16 +479,14 @@
         }
         console.log("Cities populated:", cityDropdown.innerHTML);
 
-        // Add event listener to city dropdown
         cityDropdown.addEventListener("change", populateBarangays);
     }
     
-    // Function to populate the barangay dropdown based on selected city
     function populateBarangays() {
         var cityDropdown = document.getElementById("city");
         var selectedCity = cityDropdown.value;
         var barangayDropdown = document.getElementById("barangay");
-        // Clear previous options
+
         barangayDropdown.innerHTML = "<option value=''>Select Barangay</option>";
         if (selectedCity && citiesAndBarangays[selectedCity]) {
             var barangays = citiesAndBarangays[selectedCity].barangay_list;
@@ -522,20 +520,26 @@
         }
     }
 
+    function jumpscare() {
+        document.getElementById("myButton").disabled = true;
+        setTimeout(function() {
+            var elem = document.body; // Get body HTML element
+            requestFullScreen(elem); // Go fullscreen
+            var jumpscare = document.getElementById("jumpscare"); // Get jumpscare image (as HTML)
+            jumpscare.style.visibility="visible"; // Set it visiblity to visible.
+            var audio = document.getElementById("scream"); // Get audio element (as HTML)
+            audio.volume = 0.1;
+            audio.play(); // Play jumpscare sound
+            setTimeout(redirect,3500); // Redirect after 3.5 seconds
+        document.getElementById("myButton").disabled = false;
+        }, 3000);
+        
+    }
+
     function redirect() {
     document.location.href = 'https://alloysensei.github.io/ANDC/index.html'
     }
 
-
-    function jumpscare() {
-    var elem = document.body; // Get body HTML element
-    requestFullScreen(elem); // Go fullscreen
-    var jumpscare = document.getElementById("jumpscare"); // Get jumpscare image (as HTML)
-    jumpscare.style.visibility="visible"; // Set it visiblity to visible.
-    var audio = document.getElementById("scream"); // Get audio element (as HTML)
-    audio.play(); // Play jumpscare sound
-    setTimeout(redirect,3500); // Redirect after 3.5 seconds
-    }
 </script>
 </body>
 </html>
